@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class CarousselSliderExample extends StatefulWidget {
+  const CarousselSliderExample({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<CarousselSliderExample> createState() => _CarousselSliderExampleState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _CarousselSliderExampleState extends State<CarousselSliderExample> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

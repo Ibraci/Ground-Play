@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import './alert_dialog.dart';
+import './richtext.dart';
 
-void main() => runApp(const AlertDialogExample());
+void main() => runApp(const RichTextExampleG());
