@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import './richtext.dart';
+import './forms.dart';
 
-void main() => runApp(const RichTextExampleG());
+void main() => runApp(FormExample());
