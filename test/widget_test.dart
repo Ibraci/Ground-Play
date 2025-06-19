@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:ground_play/caroussel_slider.dart';
+import 'package:ground_play/widgets/caroussel_slider.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
