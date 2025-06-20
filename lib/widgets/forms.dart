@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:ground_play/data/notifiers.dart';
 
-class FormExample extends StatelessWidget {
+class FormExample extends StatefulWidget {
   FormExample({super.key});
 
+  @override
+  State<FormExample> createState() => _FormExampleState();
+}
+
+class _FormExampleState extends State<FormExample> {
   final _formKey = GlobalKey<FormState>();
+  bool? isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +27,11 @@ class FormExample extends StatelessWidget {
           home: Scaffold(
             appBar: AppBar(
               title: const Text('Widget Formulaire'),
+              leading: BackButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
               actions: [
                 IconButton(
                   icon: ValueListenableBuilder(
@@ -100,7 +111,6 @@ class FormExample extends StatelessWidget {
                       items: const [
                         DropdownMenuItem(value: 'male', child: Text('Homme')),
                         DropdownMenuItem(value: 'female', child: Text('Femme')),
-                        DropdownMenuItem(value: 'other', child: Text('Autre')),
                       ],
                       onChanged: (value) {},
                       validator: (value) {
@@ -110,19 +120,27 @@ class FormExample extends StatelessWidget {
                         return null;
                       },
                     ),
-                    CheckboxListTile(
+                    CheckboxListTile.adaptive(
                       title: const Text('Accepter les conditions'),
-                      value: false,
-                      onChanged: (value) {},
+                      value: isChecked,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isChecked = value ?? false;
+                        });
+                      },
                       controlAffinity: ListTileControlAffinity.leading,
                     ),
-                    SwitchListTile(
+                    SwitchListTile.adaptive(
                       title: const Text('S’abonner à la newsletter'),
                       value: false,
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        print('Newsletter: $value');
+                      },
                     ),
+                    Slider(value: 0.4, onChanged: (value) {}),
                     ElevatedButton(
                       onPressed: () {
+                        print(_formKey.currentState?.validate());
                         if (_formKey.currentState?.validate() ?? false) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
